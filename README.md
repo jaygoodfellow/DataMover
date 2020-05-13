@@ -8,15 +8,16 @@
 
 ## Installation
 `nvm use`
+
 `npm install`
 
 ## Setup
-create 2 databases `source` and `destination`
-import SQL files in `data` folder into their respective databases
+Create 2 databases, `source` and `destination`
+Import SQL files in `data` folder into their respective databases
 
-rename `.env.example` to `.env`
-update `.env` with database credentials
-default port is 3333, can change in `.env`
+Rename `.env.example` to `.env`
+Update `.env` with database credentials
+Default port is 3333, can change in `.env`
 
 
 ## Running
@@ -57,11 +58,13 @@ The Export Customers button on the Exports screen will only be active if there a
 Exports are generated from the dashboard but are run as a separate process. You can either set up a cron job or go to the page directly from your browser to run any pending jobs. Visit http://localhost:3333/process to check for any exports that need to be run.
 
 **Errors**
+
 If there are errors during an export the entire export will be rolled back. The export will log the errors and be marked as Complete. The destination database will not have any records added to it. There is a hardcoded error ID at the moment, but the app will catch any type of error that the database throws when inserting into Destination.
 
 The app will not stop at the first error, as is common with database transactions. It will continue inserting records and capture all errors that occur. This will allow for the changes to happen in bulk and not require constantly creating new exports while fixing data issues.
 
 **Generate Errors**
+
 If you change a FirstName or LastName to null the export will fail. The destination database does not allow Nulls in FirstName or LastName, but the source database does.
 
 ### Error Checking
