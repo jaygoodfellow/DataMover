@@ -1,0 +1,16 @@
+{
+  "apps": [{
+    "name": "datamover",
+    "script": "./bin/www",
+    "node_args": "",
+    "watch": true,
+    "ignore_watch": ["public", "node_modules", ".git"],
+    "kill_timeout": 1200,
+    "env": {
+      "NODE_ENV": "development",
+    },
+    "env_production": {
+      "NODE_ENV": "production"
+    }
+  }]
+}

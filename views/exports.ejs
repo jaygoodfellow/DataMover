@@ -1,0 +1,46 @@
+<%- include('includes/header'); -%>
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h2>Exports</h2>
+</div>
+<% if (msg) { %>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <p class="mb-0"><%=msg%></p>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+</div>
+<% } %>
+<div class="table-responsive">
+  <table class="table table-striped table-sm dataTable">
+    <thead>
+      <tr>
+        <th>Export Date</th>
+        <th>Status</th>
+        <th>Errors</th>
+        <th># Of Records</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% exports.forEach(function(ex){ %>
+
+      <tr>
+        <td><%=ex.date%></td>
+        <td><%=ex.status%></td>
+        <td <% if (ex.errors) { %> class="text-danger" <% } %>><%=ex.errors%></td>
+        <td><a href="/exports/<%=ex.id%>"><%=ex.records%></a></td>
+      </tr>
+        <% }); %>
+    </tbody>
+  </table>
+</div>
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-5 pb-2 mb-3 border-bottom">
+  <h3>Export Customers</h3>
+</div>
+
+  <p><strong>Customers To Export:  <%=exportCount%></strong></p>
+<form class="form-inline" method="post" action="/export">
+  <button type="submit" class="btn btn-primary mb-2" <% if (exportCount == 0) { %> disabled <% } %>>Export</button>
+</form>
+<%- include('includes/footer'); -%>
