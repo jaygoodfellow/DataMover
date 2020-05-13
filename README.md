@@ -6,6 +6,9 @@
 * MySQL
 * NVM
 
+## Optional
+* PM2
+
 ## Installation
 `nvm use`
 
@@ -22,6 +25,7 @@ Default port is 3333, can change in `.env`
 
 ## Running
 `npm start` - Runs application using pm2
+
 `node ./bin/www` - Runs application without pm2
 
 Open your browser to http://localhost:3333
